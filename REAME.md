@@ -61,7 +61,7 @@ MovieVerse is a Flask-based web application for managing and exploring movies. U
 1. Clone the repository:
 
     ```bash
-    git remote add origin https://github.com/imunreal7/MovieVerse-flask.git
+    git clone https://github.com/imunreal7/MovieVerse-flask
     cd MovieVerse
     ```
 
