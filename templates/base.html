@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieVerse</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/MovieVerse-Logo-mini.jpeg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="navbar-left">
+           <a href="{{ url_for('index') }}" class="logo">
+               <img src="{{ url_for('static', filename='images/MovieVerse-Logo-mini.jpeg') }}" alt="MovieVerse Logo">
+               MovieVerse
+           </a>
+
+        </div>
+        <div class="navbar-right">
+            <a href="{{ url_for('index') }}">Home</a>
+             <a href="{{ url_for('aboutus') }}">About Us</a>
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('watchlist') }}">Watchlist</a>
+               {% if current_user.email == 'admin@movieverse.com' %}
+                    <a href="{{ url_for('add_movie') }}">Add Movie</a>
+                {% endif %}
+                <a href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('register') }}">Register</a>
+            {% endif %}
+        </div>
+    </nav>
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

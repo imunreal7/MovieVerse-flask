@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="display: flex; justify-content: center; align-items: center; height: 82vh; background-color: #f8f9fa;">
+  <div style="width: 100%; max-width: 400px; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <h2 style="text-align: center; margin-bottom: 20px; color: #333;">Register</h2>
+    <form method="POST">
+      {{ form.hidden_tag() }}
+
+      <!-- Email field -->
+      <div style="margin-bottom: 15px;">
+        <label for="email" style="font-weight: bold; color: #555;">{{ form.email.label }}</label>
+        {{ form.email(class="form-control", style="width: 100%; padding: 10px; margin-top: 5px; border-radius: 5px; border: 1px solid #ddd;") }}
+      </div>
+
+      <!-- Password field -->
+      <div style="margin-bottom: 15px;">
+        <label for="password" style="font-weight: bold; color: #555;">{{ form.password.label }}</label>
+        {{ form.password(class="form-control", style="width: 100%; padding: 10px; margin-top: 5px; border-radius: 5px; border: 1px solid #ddd;") }}
+      </div>
+
+      <!-- Confirm Password field -->
+      <div style="margin-bottom: 15px;">
+        <label for="confirm_password" style="font-weight: bold; color: #555;">{{ form.confirm_password.label }}</label>
+        {{ form.confirm_password(class="form-control", style="width: 100%; padding: 10px; margin-top: 5px; border-radius: 5px; border: 1px solid #ddd;") }}
+      </div>
+
+      <!-- Submit button -->
+      <div style="text-align: center;">
+        {{ form.submit(class="btn btn-primary", style="background-color: #007bff; color: white; padding: 10px 15px; border-radius: 5px; border: none; cursor: pointer; width: 100%; font-size: 16px;") }}
+      </div>
+    </form>
+
+    <!-- Login link -->
+    <p style="text-align: center; margin-top: 15px; font-size: 14px;">
+      Already have an account? <a href="{{ url_for('login') }}" style="color: #007bff; text-decoration: none;">Login here</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="about-section">
+    <div class="container">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Our Story</h3>
+                <p>
+                    Welcome to <span class="highlight">MovieVerse</span>, your ultimate destination for exploring, rating, and sharing movies!
+                    Driven by passion and innovation, we strive to make discovering new favorites and managing your watchlist seamless and enjoyable.
+                </p>
+                <p>
+                    At MovieVerse, we believe in the magic of storytelling and the power of cinema to bring people together.
+                    Our team of movie lovers, tech enthusiasts, and creative thinkers is committed to crafting a world-class platform for movie enthusiasts.
+                </p>
+            </div>
+            <div class="about-image">
+                <img src="{{ url_for('static', filename='images/MovieVerse-Logo.jpg') }}" alt="Team working together">
+            </div>
+        </div>
+
+        <div class="team">
+            <h3>Meet Our Team</h3>
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="{{ url_for('static', filename='images/Aman.png') }}" alt="Aman Dubey">
+                    <h4>Aman Dubey</h4>
+                    <p>Founder & CEO</p>
+                </div>
+                <!-- Add more team members here -->
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

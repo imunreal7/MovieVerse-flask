@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Your Watchlist</h2>
+<div class="movie-grid">
+    {% for movie in movies %}
+    <div class="movie-card">
+        <img src="{{ movie.poster_url or url_for('static', filename='default-poster.jpg') }}" alt="{{ movie.title }}">
+        <h3>{{ movie.title }}</h3>
+        <p><strong>Genre:</strong> {{ movie.genre }}</p>
+
+        <!-- Display the average rating for each movie in the watchlist -->
+        <p><strong>Rating:</strong>
+          {% if movie.ratings %}
+            {{ (movie.ratings | map(attribute='rating') | sum / movie.ratings | length) | round(1) }} / 5
+          {% else %}
+            No ratings yet.
+          {% endif %}
+        </p>
+
+        <form method="POST" action="{{ url_for('remove_from_watchlist', movie_id=movie.id) }}">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <button type="submit" class="btn-watched">Mark as Watched</button>
+        </form>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

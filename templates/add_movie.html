@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Add a New Movie</h2>
+<form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <p>{{ form.title.label }} {{ form.title }}</p>
+    <p>{{ form.genre.label }} {{ form.genre }}</p>
+    <p>{{ form.description.label }} {{ form.description }}</p>
+    <p>{{ form.poster.label }} {{ form.poster }}</p>
+    <p>{{ form.submit }}</p>
+</form>
+{% endblock %}
